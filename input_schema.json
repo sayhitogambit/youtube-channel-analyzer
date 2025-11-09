@@ -90,6 +90,20 @@
             "editor": "select",
             "sectionCaption": "Output Settings",
             "sectionDescription": "Configure output format"
+        },
+        "proxyConfiguration": {
+            "title": "Proxy Configuration",
+            "type": "object",
+            "description": "Configure Apify Proxy (optional, may help with rate limiting)",
+            "editor": "proxy",
+            "sectionCaption": "Proxy Settings",
+            "sectionDescription": "Configure proxy if experiencing blocks",
+            "default": {
+                "useApifyProxy": false
+            },
+            "prefill": {
+                "useApifyProxy": false
+            }
         }
     },
     "required": ["channel_url"]
