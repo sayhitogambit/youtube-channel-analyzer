@@ -1,0 +1,96 @@
+{
+    "title": "YouTube Channel Analyzer Input",
+    "description": "Analyze YouTube channels and extract video data",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "channel_url": {
+            "title": "Channel URL",
+            "type": "string",
+            "description": "YouTube channel URL (supports @handle, /c/name, /channel/ID formats)",
+            "example": "https://www.youtube.com/@channelname",
+            "prefill": "https://www.youtube.com/@",
+            "editor": "textfield",
+            "pattern": "^https?://(www\\.)?youtube\\.com/.*"
+        },
+        "scrape_type": {
+            "title": "Scrape Type",
+            "type": "string",
+            "description": "What to extract from the channel",
+            "default": "channel_videos",
+            "enum": ["channel_videos", "channel_info", "both"],
+            "enumTitles": ["Channel Videos", "Channel Info Only", "Both"],
+            "editor": "select"
+        },
+        "sort_by": {
+            "title": "Sort Videos By",
+            "type": "string",
+            "description": "How to sort the videos",
+            "default": "newest",
+            "enum": ["newest", "popular", "oldest"],
+            "enumTitles": ["Newest First", "Most Popular", "Oldest First"],
+            "editor": "select"
+        },
+        "max_videos": {
+            "title": "Maximum Videos",
+            "type": "integer",
+            "description": "Maximum number of videos to scrape",
+            "default": 50,
+            "minimum": 1,
+            "maximum": 500,
+            "editor": "number"
+        },
+        "include_shorts": {
+            "title": "Include Shorts",
+            "type": "boolean",
+            "description": "Include YouTube Shorts in results",
+            "default": true,
+            "editor": "checkbox"
+        },
+        "include_transcripts": {
+            "title": "Include Transcripts",
+            "type": "boolean",
+            "description": "Extract video transcripts/captions if available",
+            "default": false,
+            "editor": "checkbox",
+            "sectionCaption": "Additional Data",
+            "sectionDescription": "Extract extra information"
+        },
+        "include_comments": {
+            "title": "Include Comments",
+            "type": "boolean",
+            "description": "Extract top comments from videos",
+            "default": false,
+            "editor": "checkbox"
+        },
+        "min_views": {
+            "title": "Minimum Views",
+            "type": "integer",
+            "description": "Only include videos with at least this many views (0 = no filter)",
+            "default": 0,
+            "minimum": 0,
+            "editor": "number",
+            "sectionCaption": "Filters",
+            "sectionDescription": "Filter video results"
+        },
+        "date_from": {
+            "title": "Date From",
+            "type": "string",
+            "description": "Only include videos published after this date (YYYY-MM-DD)",
+            "example": "2024-01-01",
+            "editor": "textfield"
+        },
+        "output_format": {
+            "title": "Output Format",
+            "type": "string",
+            "description": "Format for the output data",
+            "default": "json",
+            "enum": ["json", "csv", "excel"],
+            "enumTitles": ["JSON", "CSV", "Excel"],
+            "editor": "select",
+            "sectionCaption": "Output Settings",
+            "sectionDescription": "Configure output format"
+        }
+    },
+    "required": ["channel_url"]
+}

@@ -1,0 +1,29 @@
+{
+    "actorSpecification": 1,
+    "name": "youtube-channel-analyzer",
+    "title": "YouTube Channel Analyzer",
+    "description": "Analyze YouTube channels and extract video metadata, statistics, and engagement metrics without API keys.",
+    "version": "1.0.0",
+    "storages": {
+        "dataset": {
+            "actorSpecification": 1,
+            "title": "YouTube Videos Dataset",
+            "views": {
+                "videos": {
+                    "title": "Videos",
+                    "transformation": {
+                        "fields": ["title", "views", "likes", "duration", "published_at", "description", "channel_name"]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "pageSize": 20
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "input": "./input_schema.json",
+    "dockerfile": "./Dockerfile"
+}
